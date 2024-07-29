@@ -21,5 +21,21 @@ const index = async () => {
       console.log(error);
     }
   };
+
+  const create = async (movieFormData) => {
+    try {
+      const res = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
-  export { index,show };
+  export { index,show, create };

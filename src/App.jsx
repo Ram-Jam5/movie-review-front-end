@@ -8,7 +8,7 @@ import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
 import MovieList from './components/MovieList/MovieList';
 import * as movieService from './services/movieService';
-
+import MovieDetails from './components/MovieDetails/MovieDetails';
 
 export const AuthedUserContext = createContext(null);
 
@@ -39,6 +39,7 @@ const App = () => {
     <>
       <Route path="/" element={<Dashboard user={user} />} />
       <Route path="/movies" element={<MovieList movies={movies} />} />
+      <Route path="/movies/:movieid" element={<MovieDetails />} />
     </>
   ) : (
     // Public Route:

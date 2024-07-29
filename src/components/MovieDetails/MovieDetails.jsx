@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as movieService from '../../services/movieService'
 
+import CommentForm from '../CommentForm/CommentForm';
+
 const MovieDetails = (props) => {
     const { movieId } = useParams();
     console.log('movieId', movieId);
@@ -19,6 +21,11 @@ const MovieDetails = (props) => {
       
       console.log('movie state:', movie);
 
+    const handleAddComment = async (commentFormData) => {
+       const newComment = await movieService.createComment(movieId, commentFormData);
+       setMovie({...movie, comments: [...movie.comments, newComment] });
+    };
+
       if (!movie) return <main>Loading...</main>;
     return <main>
     <header>
@@ -31,7 +38,8 @@ const MovieDetails = (props) => {
     </header>
     <p>{movie.text}</p>
     <section>
-  <h2>Comments</h2>
+    <h2>Comments</h2>
+    <CommentForm  handleAddComment={handleAddComment} />
 
   {!movie.comments.length && <p>There are no comments.</p>}
 

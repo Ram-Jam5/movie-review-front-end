@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -9,7 +9,7 @@ import * as authService from '../src/services/authService'; // import the authse
 import MovieList from './components/MovieList/MovieList';
 import * as movieService from './services/movieService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
-
+import MovieForm from './components/MovieForm/MovieForm';
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -29,6 +29,15 @@ const App = () => {
     if (user) fetchAllMovies();
   }, [user]);
 
+  const navigate = useNavigate();
+
+  const handleAddMovie = async (movieFormData) => {
+   const newMovie = await movieService.create(movieFormData);
+   setMovies([newMovie, ...movies]);
+    navigate('/movies');
+  };
+  
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -39,7 +48,8 @@ const App = () => {
     <>
       <Route path="/" element={<Dashboard user={user} />} />
       <Route path="/movies" element={<MovieList movies={movies} />} />
-      <Route path="/movies/:movieid" element={<MovieDetails />} />
+      <Route path="/movies/:movieId" element={<MovieDetails />} />
+      <Route path="/:movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
     </>
   ) : (
     // Public Route:

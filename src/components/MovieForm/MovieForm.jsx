@@ -6,7 +6,9 @@ import * as movieService from '../../services/movieService';
 const MovieForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
-    text: '',
+    director: '',
+    category:'',
+    year: ''
   });
 
   const handleChange = (evt) => {
@@ -40,7 +42,7 @@ const MovieForm = (props) => {
         <label htmlFor="title-input">Title</label>
         <input
           required
-          unique
+          unique="title"
           type="text"
           name="title"
           id="title-input"
@@ -80,8 +82,8 @@ const MovieForm = (props) => {
         <input
           required
           type="number"
-          name="Year"
-          id="Year-input"
+          name="year"
+          id="year-input"
           value={formData.year}
           onChange={handleChange}
         />

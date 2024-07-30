@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const MovieList = (props) => {
-    return  <main>
+    return ( <><main>
     {props.movies.map((movie) => (
       <Link key={movie._id} to={`/movies/${movie._id}`}>
         <article>
@@ -17,6 +17,7 @@ const MovieList = (props) => {
       </Link>
     ))}
   </main>;
-};
+  </>
+)};
 
 export default MovieList;

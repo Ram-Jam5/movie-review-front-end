@@ -22,19 +22,19 @@ const MovieForm = (props) => {
     }
   };
   
+  const { movieId } = useParams();
+
   useEffect(() => {
     const fetchMovie = async () => {
       const movieData = await movieService.show(movieId);
       setFormData(movieData);
     };
     if (movieId) fetchMovie();
-  }, [moiveId]);
-  const { movieId } = useParams();
+  }, [movieId]);
 
- 
 
-  return (
-    <main className={styles.container}>
+   return (
+    <main>
       <form onSubmit={handleSubmit}>
         <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
         <label htmlFor="title-input">Title</label>

@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/movies`;
+const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/movies/`;
 
 const index = async () => {
     try {
@@ -13,7 +13,7 @@ const index = async () => {
 
   const show = async (movieId) => {
     try {
-      const res = await fetch(`${BASE_URL}/${movieId}`, {
+      const res = await fetch(`${BASE_URL}/${movies/movieId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       return res.json();

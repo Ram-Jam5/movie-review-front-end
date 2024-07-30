@@ -40,6 +40,7 @@ const MovieForm = (props) => {
         <label htmlFor="title-input">Title</label>
         <input
           required
+          unique
           type="text"
           name="title"
           id="title-input"
@@ -47,9 +48,9 @@ const MovieForm = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="director-input">Director</label>
-        <textarea
+        <input
           required
-          type="director"
+          type="text"
           name="director"
           id="director-input"
           value={formData.director}
@@ -76,9 +77,9 @@ const MovieForm = (props) => {
         </select>
 
         <label htmlFor="year-input">Year</label>
-        <textarea
+        <input
           required
-          type="Year"
+          type="number"
           name="Year"
           id="Year-input"
           value={formData.year}

@@ -46,16 +46,46 @@ const MovieForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="text-input">Text</label>
+        <label htmlFor="director-input">Director</label>
         <textarea
           required
-          type="text"
-          name="text"
-          id="text-input"
-          value={formData.text}
+          type="director"
+          name="director"
+          id="director-input"
+          value={formData.director}
           onChange={handleChange}
         />
-        <button type="submit">SUBMIT</button>
+        <label htmlFor="category-input">Genre</label>
+        <select
+          required
+          name="category"
+          id="category-input"
+          value={formData.category}
+          onChange={handleChange}
+        >
+          <option value="Action">Action</option>
+          <option value="Animation">Animation</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Drama">Drama</option>
+          <option value="Horror">Horror</option>
+          <option value="Musical">Musical</option>
+          <option value="Romance">Romance</option>
+          <option value="Science-Fiction">Science-Fiction</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Western">Western</option>
+        </select>
+
+        <label htmlFor="year-input">Year</label>
+        <textarea
+          required
+          type="Year"
+          name="Year"
+          id="Year-input"
+          value={formData.year}
+          onChange={handleChange}
+        />
+
+       <button type="submit">SUBMIT</button>
       </form>
     </main>
   );

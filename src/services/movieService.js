@@ -54,4 +54,17 @@ const index = async () => {
     }
   };
 
-  export { index,show, create, createComment };
+  const deleteMovie = async (movieId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  export { index,show, create, createComment, deleteMovie };

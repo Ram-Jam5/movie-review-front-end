@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
-
+import { AuthedUserContext } from '../../App';
 import CommentForm from '../CommentForm/CommentForm';
 
 const MovieDetails = (props) => {
@@ -9,6 +9,7 @@ const MovieDetails = (props) => {
     console.log('movieId', movieId);
 
     const [movie, setMovie] = useState(null);
+    const user = useContext(AuthedUserContext);
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -29,7 +30,6 @@ const MovieDetails = (props) => {
       if (!movie) return <main>Loading...</main>;
     return <main>
     <header>
-      <p>{movie.category.toUpperCase()}</p>
       <h1>{movie.title}</h1>
       <p>
         {movie.author.username} posted on
@@ -50,6 +50,14 @@ const MovieDetails = (props) => {
           {comment.author.username} posted on
           {new Date(comment.createdAt).toLocaleDateString()}
         </p>
+        {movie.author._id === user._id && (
+    <>
+     // src/components/HootDetails/HootDetails.jsx
+
+<button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
+
+    </>
+        )}
       </header>
       <p>{comment.text}</p>
     </article>

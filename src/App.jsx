@@ -37,6 +37,11 @@ const App = () => {
     navigate('/movies');
   };
   
+  const handleDeleteMovie = async (movieId) => {
+    const deletedMovie = await movieService.deleteMovie(movieId);
+    setMovies(movie.filter((movie) => movie._id !== deletedMovie._id));
+    navigate('/movies');
+  };
 
   return (
     <>
@@ -50,6 +55,7 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/:movieId" element={<MovieDetails />} />
       <Route path="/:movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
+      <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
     </>
   ) : (
     // Public Route:

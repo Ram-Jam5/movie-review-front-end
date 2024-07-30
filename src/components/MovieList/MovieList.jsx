@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
-
 const MovieList = (props) => {
     return  <main>
     {props.movies.map((movie) => (
@@ -9,12 +7,12 @@ const MovieList = (props) => {
         <article>
           <header>
             <h2>{movie.title}</h2>
+            <p>Year: {movie.year}</p>
+            <p>Director: {movie.director}</p>
             <p>
-              {movie.author.username} posted on 
-              {new Date(movie.createdAt).toLocaleDateString()}
+              {movie.category}
             </p>
-          </header>
-          <p>{movie.text}</p>
+          </header>       
         </article>
       </Link>
     ))}

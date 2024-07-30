@@ -7,25 +7,25 @@ const NavBar = ({ handleSignout }) => {
   return (
     <>
       {user ? (
-        <nav>
-        <ul>
-         <li><Link to='/'>HOME</Link></li>
-          <li><Link to='/movies'>Movies</Link></li>
-          <li><Link to='' onClick={handleSignout}>SIGN OUT</Link></li>
-          <li><Link to="/movies/new">NEW Movie</Link></li>
-        </ul>
-        </nav>
+        <div class="default-nav-bar">
+          <Link to='/'>HOME</Link>
+          <Link to='/movies'>Movies</Link>
+          <Link to="/movies/new">Add Movie</Link>
+          <Link to='' onClick={handleSignout}>SIGN OUT</Link>
+        </div>
       ) : (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
+        <div class="default-nav-bar">
+          <nav>
+            <ul>
+              <li>
+                <Link to="/signin">Sign In</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       )}
     </>
   );

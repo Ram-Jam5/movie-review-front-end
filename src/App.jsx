@@ -12,6 +12,8 @@ import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
 export const AuthedUserContext = createContext(null);
 
+import './stylesheets/main.css'
+
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); 
   const [movies, setMovies] = useState([])

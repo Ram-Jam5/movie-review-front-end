@@ -34,30 +34,36 @@ const MovieForm = (props) => {
 
 
    return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
-        <label htmlFor="title-input">Title</label>
-        <input
-          required
-          type="text"
-          name="title"
-          id="title-input"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <label htmlFor="text-input">Text</label>
-        <textarea
-          required
-          type="text"
-          name="text"
-          id="text-input"
-          value={formData.text}
-          onChange={handleChange}
-        />
-        <button type="submit">SUBMIT</button>
-      </form>
-    </main>
+    <div class="outer-container">
+      <div class="main-container">
+        <main>
+          <form onSubmit={handleSubmit}>
+            <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
+            <label htmlFor="title-input">Title</label>
+            <input
+              required
+              type="text"
+              name="title"
+              id="title-input"
+              value={formData.title}
+              onChange={handleChange}
+            />
+            <br></br>
+            <label htmlFor="text-input">Text</label>
+            <textarea
+              required
+              type="text"
+              name="text"
+              id="text-input"
+              value={formData.text}
+              onChange={handleChange}
+            />
+            <br></br>
+            <button type="submit">SUBMIT</button>
+          </form>
+        </main>
+      </div>
+    </div>
   );
 };
 

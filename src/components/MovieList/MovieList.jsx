@@ -12,8 +12,7 @@ const MovieList = (props) => {
             <p>
               {movie.category}
             </p>
-          </header>
-          <p>{movie.text}</p>
+          </header>       
         </article>
       </Link>
     ))}

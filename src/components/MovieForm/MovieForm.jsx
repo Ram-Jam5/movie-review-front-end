@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import * as movieService from '../../services/movieService';
@@ -14,6 +13,14 @@ const MovieForm = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (movieId) {
+      props.handleUpdateMovie(movieId, formData);
+    } else {
+      props.handleAddMovie(formData);
+    }
+  };
   
   useEffect(() => {
     const fetchMovie = async () => {
@@ -24,14 +31,7 @@ const MovieForm = (props) => {
   }, [moiveId]);
   const { movieId } = useParams();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    if (movieId) {
-      props.handleUpdateMovie(movieId, formData);
-    } else {
-      props.handleAddMovie(formData);
-    }
-  };
+ 
 
   return (
     <main className={styles.container}>

@@ -5,7 +5,7 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
-import * as authService from '../src/services/authService'; // import the authservice
+import * as authService from '../src/services/authService'; 
 import MovieList from './components/MovieList/MovieList';
 import * as movieService from './services/movieService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
@@ -13,8 +13,10 @@ import MovieForm from './components/MovieForm/MovieForm';
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [user, setUser] = useState(authService.getUser()); 
   const [movies, setMovies] = useState([])
+
+ 
 
   const handleSignout = () => {
     authService.signout();

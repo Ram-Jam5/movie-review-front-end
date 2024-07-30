@@ -1,5 +1,8 @@
 
 import { useState } from 'react';
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import * as movieService from '../../services/movieService';
 
 const MovieForm = (props) => {
   const [formData, setFormData] = useState({
@@ -11,14 +14,29 @@ const MovieForm = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
+  
+  useEffect(() => {
+    const fetchMovie = async () => {
+      const movieData = await movieService.show(movieId);
+      setFormData(movieData);
+    };
+    if (movieId) fetchMovie();
+  }, [moiveId]);
+  const { movieId } = useParams();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-   props.handleAddMovie(formData);
+    if (movieId) {
+      props.handleUpdateMovie(movieId, formData);
+    } else {
+      props.handleAddMovie(formData);
+    }
   };
 
   return (
-    <main>
+    <main className={styles.container}>
       <form onSubmit={handleSubmit}>
+        <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
         <label htmlFor="title-input">Title</label>
         <input
           required

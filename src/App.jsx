@@ -43,6 +43,13 @@ const App = () => {
     navigate('/movies');
   };
 
+  const handleUpdateMovie = async (movieId, movieFormData) => {
+    const updatedMovie = await movieService.update(movieId, movieFormData);
+  
+    setMoives(movie.map((movie) => (moviesId === movie._id ? updatedMovie : movie)));
+  
+    navigate(`/movies/${movieId}`);
+  };
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -56,6 +63,7 @@ const App = () => {
       <Route path="/movies/:movieId" element={<MovieDetails />} />
       <Route path="/:movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
       <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
+      <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
     </>
   ) : (
     // Public Route:

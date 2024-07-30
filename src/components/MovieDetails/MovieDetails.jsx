@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
 import { AuthedUserContext } from '../../App';
 import CommentForm from '../CommentForm/CommentForm';
+import { Link } from 'react-router-dom';
 
 const MovieDetails = (props) => {
     const { movieId } = useParams();
@@ -52,8 +53,8 @@ const MovieDetails = (props) => {
         </p>
         {movie.author._id === user._id && (
     <>
-     // src/components/HootDetails/HootDetails.jsx
-
+ 
+ <Link to={`/movies/${movieId}/edit`}>Edit</Link>
 <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
 
     </>

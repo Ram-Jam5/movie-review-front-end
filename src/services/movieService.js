@@ -38,4 +38,20 @@ const index = async () => {
     }
   };
   
-  export { index,show, create };
+  const createComment = async (movieId, commentFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}/comments`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(commentFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  export { index,show, create, createComment };

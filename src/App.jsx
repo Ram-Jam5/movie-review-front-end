@@ -62,8 +62,7 @@ const App = () => {
     <>
       <Route path="/" element={<Dashboard user={user} />} />
       <Route path="/movies" element={<MovieList movies={movies} />} />
-      <Route path="/movies/:movieId" element={<MovieDetails />} />
-      <Route path="/:movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
+      <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
       <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
       <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
     </>

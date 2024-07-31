@@ -8,14 +8,17 @@ import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; 
 import MovieList from './components/MovieList/MovieList';
 import * as movieService from './services/movieService';
+import * as reviewService from './services/reviewService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
+// import ReviewList from './components/ReviewList/ReviewList';
 export const AuthedUserContext = createContext(null);
 
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
  
 
@@ -31,6 +34,15 @@ const App = () => {
     };
     if (user) fetchAllMovies();
   }, [user]);
+
+  // reviews useEffect
+  // useEffect(() => {
+  //   const fetchAllReviews = async () => {
+  //     const reviewsData = await reviewService.index(movieId);
+  //     setReviews(reviewsData);
+  //   };
+  //   if (user) fetchAllReviews();
+  // }, [user])
 
   const navigate = useNavigate();
 
@@ -49,7 +61,7 @@ const App = () => {
   const handleUpdateMovie = async (movieId, movieFormData) => {
     const updatedMovie = await movieService.update(movieId, movieFormData);
   
-    setMoives(movie.map((movie) => (moviesId === movie._id ? updatedMovie : movie)));
+    setMovies(movie.map((movie) => (moviesId === movie._id ? updatedMovie : movie)));
   
     navigate(`/movies/${movieId}`);
   };
@@ -65,6 +77,7 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
       <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
+      {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
       <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
     </>
   ) : (

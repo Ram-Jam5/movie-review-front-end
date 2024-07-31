@@ -5,11 +5,12 @@ import { AuthedUserContext } from '../../App';
 import CommentForm from '../CommentForm/CommentForm';
 import { Link } from 'react-router-dom';
 
+
 const MovieDetails = (props) => {
+  const [movie, setMovie] = useState(null);
+  // const [reviews, setReviews] =  useState([])
     const { movieId } = useParams();
     console.log('movieId', movieId);
-
-    const [movie, setMovie] = useState(null);
     const user = useContext(AuthedUserContext);
 
     useEffect(() => {
@@ -20,6 +21,13 @@ const MovieDetails = (props) => {
         };
         fetchMovie();
       }, [movieId]);
+
+      // useEffect(() => {
+      //   const fetchAllReviews =async () => {
+      //     const reviewData
+      //   }
+      // })
+
       
       console.log('movie state:', movie);
 
@@ -30,22 +38,38 @@ const MovieDetails = (props) => {
 
       if (!movie) return <main>Loading...</main>;
     return (
-          <div class="outer-container">
-            <div class="main-container">
+          <div className="outer-container">
+            <div className="main-container">
               <main>
               <header>
                 <h1>{movie.title}</h1>
+                <p>{movie.text}</p>
+                <p>{movie.category}</p>
+                <p>{movie.director}</p>
+                <p>{movie.year}</p>
                 <p>
-                  {movie.author.username} posted on
-                  {new Date(movie.createdAt).toLocaleDateString()}
+                  {/* {movie.author.username} posted on
+                  {new Date(movie.createdAt).toLocaleDateString()} */}
                 </p>
               </header>
-              <p>{movie.text}</p>
-              <section>
-              <h2>Comments</h2>
-              <CommentForm  handleAddComment={handleAddComment} />
+              <>
+              {/* {movie.reviews.map((review) => (
+                <article key={review._id}>
+                  
+                </article>
+                <p>
+                  {review.title}
+                </p>
+              ))} */}
+              </>
+            <>
+            
+            </>
+              {/* <section> */}
+              {/* <h2>Comments</h2>
+              <CommentForm  handleAddComment={handleAddComment} /> */}
 
-            {!movie.comments.length && <p>There are no comments.</p>}
+            {/* {!movie.comments.length && <p>There are no comments.</p>}
 
             {movie.comments.map((comment) => (
               <article key={comment._id}>
@@ -54,10 +78,10 @@ const MovieDetails = (props) => {
                     {comment.author.username} posted on
                     {new Date(comment.createdAt).toLocaleDateString()}
                   </p>
-                  {movie.author._id === user._id && (
-              <>
+                  {movie.author._id === user._id && ( */}
+              {/* <> */}
           
-          <Link to={`/movies/${movieId}/edit`}>Edit</Link>
+          {/* <Link to={`/movies/${movieId}/edit`}>Edit</Link>
           <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
 
               </>
@@ -66,7 +90,7 @@ const MovieDetails = (props) => {
                 <p>{comment.text}</p>
               </article>
             ))}
-          </section>
+          </section> */}
             </main>
           </div>
       </div>

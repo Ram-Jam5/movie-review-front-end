@@ -13,7 +13,7 @@ const index = async () => {
 
   const show = async (movieId) => {
     try {
-      const res = await fetch(`${BASE_URL}/${movies/movieId}`, {
+      const res = await fetch(`${BASE_URL}/${movieId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       return res.json();
@@ -83,4 +83,4 @@ const index = async () => {
       console.log(error);
     }
   }
-  export { index,show, create, createComment, deleteMovie, update };
+  export { index, show, create, createComment, deleteMovie, update };

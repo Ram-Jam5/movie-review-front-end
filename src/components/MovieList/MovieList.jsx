@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 const MovieList = (props) => {
     return (
-      <div class="outer-container">
-        <div class="main-container">
+      <div className="outer-container">
+        <div className="main-container">
           <main>
             {props.movies.map((movie) => (
               <Link style={{color: 'white'}} key={movie._id} to={`/movies/${movie._id}`}>

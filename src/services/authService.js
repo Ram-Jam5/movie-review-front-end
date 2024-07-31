@@ -7,6 +7,18 @@ const getUser = () => {
   return user;
 };
 
+const getAllUsers = async () => {
+  try {
+    const res = await fetch(`${BACKEND_URL}/users`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+    return await res.json();
+  } catch (error) {
+    console.log("ERROR IN FETCHING USERS");
+    console.log(error);
+  }
+}
+
 const signup = async (formData) => {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
@@ -51,4 +63,4 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-export { signup, signin, getUser, signout };
+export { signup, signin, getUser, signout, getAllUsers };

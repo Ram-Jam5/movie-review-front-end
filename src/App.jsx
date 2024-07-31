@@ -24,7 +24,7 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
   const [reviews, setReviews] = useState([]);
-
+  const [users, setUsers] = useState([])
  
 
 

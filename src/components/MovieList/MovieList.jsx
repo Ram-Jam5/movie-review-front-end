@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 
 const MovieList = (props) => {
+
     return (
       <div className="outer-container">
         <div className="main-container">
           <main>
-            {props.movies.map((movie) => (
+            {props.movies.map((movie, index) => (
               <Link style={{color: 'white'}} key={movie._id} to={`/movies/${movie._id}`}>
                 <article>
                   <header>
@@ -22,7 +23,10 @@ const MovieList = (props) => {
             ))}
           </main>
         </div>
+
       </div>
-    )
-};
+  </>
+)};
+
+
 export default MovieList;

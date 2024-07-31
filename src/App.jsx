@@ -8,15 +8,27 @@ import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; 
 import MovieList from './components/MovieList/MovieList';
 import * as movieService from './services/movieService';
+import * as reviewService from './services/reviewService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
+
+// import ReviewList from './components/ReviewList/ReviewList';
+
+import CommunityPage from './components/CommunityPage/CommunityPage'
+
 export const AuthedUserContext = createContext(null);
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); 
-  const [movies, setMovies] = useState([])
+
+  const [movies, setMovies] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
  
+
+
+
 
   const handleSignout = () => {
     authService.signout();
@@ -30,6 +42,25 @@ const App = () => {
     };
     if (user) fetchAllMovies();
   }, [user]);
+
+
+  // reviews useEffect
+  // useEffect(() => {
+  //   const fetchAllReviews = async () => {
+  //     const reviewsData = await reviewService.index(movieId);
+  //     setReviews(reviewsData);
+  //   };
+  //   if (user) fetchAllReviews();
+  // }, [user])
+
+  useEffect(() => {
+    const fetchAllUsers = async () => {
+      const usersData = await authService.getAllUsers();
+      setUsers(usersData);
+    };
+    if (user) fetchAllUsers();
+  }, [user]);
+
 
   const navigate = useNavigate();
 
@@ -64,8 +95,14 @@ const App = () => {
       <Route path="/" element={<Dashboard user={user} />} />
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
+
+      <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
+      {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
+
       <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
+
       <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
+      <Route path="/users" element={<CommunityPage users={users}/>} />
     </>
   ) : (
     // Public Route:

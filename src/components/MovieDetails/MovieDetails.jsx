@@ -53,14 +53,15 @@ const MovieDetails = (props) => {
                 </p>
               </header>
               <>
-              {/* {movie.reviews.map((review) => (
-                <article key={review._id}>
-                  
-                </article>
-                <p>
-                  {review.title}
-                </p>
-              ))} */}
+              
+              </>
+              <>
+             {movie.reviews ? movie.reviews.map((review) => (
+              <div>
+                {review.title}
+              </div>
+             )): console.log("second") }
+              
               </>
             <>
             

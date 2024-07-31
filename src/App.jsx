@@ -23,7 +23,12 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser()); 
 
   const [movies, setMovies] = useState([]);
+
+  const [reviews, setReviews] = useState([]);
+  const [users, setUsers] = useState([])
+
   // const [reviews, setReviews] = useState([]);
+
 
  
 

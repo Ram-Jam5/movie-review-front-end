@@ -29,7 +29,11 @@ const MovieList = (props) => {
         </div>
 
       </div>
+
+
+
   
+
 )};
 
 

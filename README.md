@@ -4,6 +4,8 @@ Screenshot:
 
 #### Getting Started: The planning materials we used for this app are on our [trello board](https://trello.com/invite/b/66a05c6da3eef27de20edbc2/ATTIa8788d82b23f4e9b6a37cb3ce8ecebcc5A691DAB/group-5-mern-project). Our deployed link for our app can be found [here](). You can also find our back-repository [here](https://github.com/Ram-Jam5/movie-review-back-end). 
 
-#### Technologies used: The principle technologies used: JavaScript, React, CSS.
+#### Attributions: For this project we used MongoDB.
+
+#### The principle technologies used in this app are: JavaScript, Express, Node, React, Mongoose, Cors
 
 #### Next Steps: Planned future enhancements for this project are to add the ability for users to add TV Show information and to add more details about Movies and TV shows like the cast and crew.

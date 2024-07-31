@@ -7,7 +7,11 @@ const MovieList = (props) => {
         <div className="main-container">
           <main>
             {props.movies.map((movie, index) => (
+
               <Link style={{color: 'white'}} key={movie._id || index} to={`/movies/${movie._id}`}>
+
+             
+
                 <article>
                   <header>
                     <h2>{movie.title}</h2>
@@ -25,6 +29,10 @@ const MovieList = (props) => {
         </div>
 
       </div>
+
+
+
+  
 
 )};
 

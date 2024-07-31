@@ -29,42 +29,48 @@ const MovieDetails = (props) => {
     };
 
       if (!movie) return <main>Loading...</main>;
-    return <main>
-    <header>
-      <h1>{movie.title}</h1>
-      <p>
-        {movie.author.username} posted on
-        {new Date(movie.createdAt).toLocaleDateString()}
-      </p>
-    </header>
-    <p>{movie.text}</p>
-    <section>
-    <h2>Comments</h2>
-    <CommentForm  handleAddComment={handleAddComment} />
+    return (
+          <div class="outer-container">
+            <div class="main-container">
+              <main>
+              <header>
+                <h1>{movie.title}</h1>
+                <p>
+                  {movie.author.username} posted on
+                  {new Date(movie.createdAt).toLocaleDateString()}
+                </p>
+              </header>
+              <p>{movie.text}</p>
+              <section>
+              <h2>Comments</h2>
+              <CommentForm  handleAddComment={handleAddComment} />
 
-  {!movie.comments.length && <p>There are no comments.</p>}
+            {!movie.comments.length && <p>There are no comments.</p>}
 
-  {movie.comments.map((comment) => (
-    <article key={comment._id}>
-      <header>
-        <p>
-          {comment.author.username} posted on
-          {new Date(comment.createdAt).toLocaleDateString()}
-        </p>
-        {movie.author._id === user._id && (
-    <>
- 
- <Link to={`/movies/${movieId}/edit`}>Edit</Link>
-<button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
+            {movie.comments.map((comment) => (
+              <article key={comment._id}>
+                <header>
+                  <p>
+                    {comment.author.username} posted on
+                    {new Date(comment.createdAt).toLocaleDateString()}
+                  </p>
+                  {movie.author._id === user._id && (
+              <>
+          
+          <Link to={`/movies/${movieId}/edit`}>Edit</Link>
+          <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
 
-    </>
-        )}
-      </header>
-      <p>{comment.text}</p>
-    </article>
-  ))}
-</section>
-  </main>
+              </>
+                  )}
+                </header>
+                <p>{comment.text}</p>
+              </article>
+            ))}
+          </section>
+            </main>
+          </div>
+      </div>
+    )
 };
 
 export default MovieDetails;

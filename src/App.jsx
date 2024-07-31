@@ -35,7 +35,7 @@ const App = () => {
 
   const handleAddMovie = async (movieFormData) => {
    const newMovie = await movieService.create(movieFormData);
-   setMovies([newMovie, ...movies]);
+   setMovies([...movies, newMovie]);
     navigate('/movies');
   };
   

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 
 const MovieList = (props) => {
-    return ( <><main>
-    {props.movies.map((movie) => (
-      <Link key={movie._id} to={`/movies/${movie._id}`}>
+    return ( 
+    <>
+    <main>
+    {props.movies.map((movie, index) => (
+      <Link key={movie._id || index} to={`/movies/${movie._id}`}>
         <article>
           <header>
             <h2>{movie.title}</h2>

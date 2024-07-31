@@ -44,7 +44,7 @@ const MovieForm = (props) => {
             <label htmlFor="title-input">Title</label>
             <input
               required
-              unique="true"
+              unique="title"
               type="text"
               name="title"
               id="title-input"

@@ -36,15 +36,15 @@ const MovieForm = (props) => {
 
 
    return (
-    <div class="outer-container">
-      <div class="main-container">
+    <div className="outer-container">
+      <div className="main-container">
           <main>
           <form onSubmit={handleSubmit}>
             <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
             <label htmlFor="title-input">Title</label>
             <input
               required
-              unique="title"
+              unique="true"
               type="text"
               name="title"
               id="title-input"

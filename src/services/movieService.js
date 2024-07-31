@@ -82,5 +82,8 @@ const index = async () => {
     } catch (error) {
       console.log(error);
     }
-  }
-  export { index,show, create, createComment, deleteMovie, update };
+
+  export { index, show, create, createComment, deleteMovie, update };
+
+
+

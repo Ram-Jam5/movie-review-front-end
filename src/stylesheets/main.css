@@ -1,0 +1,35 @@
+body {
+    background-color: #1e1e1e;
+}
+
+h1, h2, h3, p, span, a {
+    color: white;
+    font-family: Helvetica;
+}
+
+.left, .right {
+    flex: 0 1 auto;
+}
+
+.default-nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vh;
+    max-width: 800px;
+}

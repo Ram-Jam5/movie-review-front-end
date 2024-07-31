@@ -7,11 +7,11 @@ const MovieList = (props) => {
         <div className="main-container">
           <main>
             {props.movies.map((movie, index) => (
-<<<<<<< HEAD
+
               <Link style={{color: 'white'}} key={movie._id || index} to={`/movies/${movie._id}`}>
-=======
-              <Link style={{color: 'white'}} key={movie._id} to={`/movies/${movie._id}`}>
->>>>>>> 8296204149f9afac0eaaabc2c4976dc248e2d78e
+
+             
+
                 <article>
                   <header>
                     <h2>{movie.title}</h2>
@@ -29,7 +29,7 @@ const MovieList = (props) => {
         </div>
 
       </div>
-  </>
+  
 )};
 
 

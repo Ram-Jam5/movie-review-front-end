@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
 import { AuthedUserContext } from '../../App';
-import CommentForm from '../CommentForm/CommentForm';
+// import CommentForm from '../CommentForm/CommentForm';
 import { Link } from 'react-router-dom';
 
 
@@ -31,10 +31,10 @@ const MovieDetails = (props) => {
       
       console.log('movie state:', movie);
 
-    const handleAddComment = async (commentFormData) => {
-       const newComment = await movieService.createComment(movieId, commentFormData);
-       setMovie({...movie, comments: [...movie.comments, newComment] });
-    };
+    // const handleAddComment = async (commentFormData) => {
+    //    const newComment = await movieService.createComment(movieId, commentFormData);
+    //    setMovie({...movie, comments: [...movie.comments, newComment] });
+    // };
 
       if (!movie) return <main>Loading...</main>;
     return (

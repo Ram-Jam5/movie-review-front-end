@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 
 const CommunityPage = (props) => {
+    const users = props.users || [];
+
     return (
       <div className="outer-container">
         <div className="main-container">
           <main>
-            {props.users.map((user) => (
+            {users.map((user) => (
               <Link style={{color: 'white'}} key={user._id} to={`/users/${user._id}`}>
                 <article>
                   <header>

@@ -9,12 +9,12 @@ const getUser = () => {
 
 const getAllUsers = async () => {
   try {
-    const res = await fetch(`${BASE_URL}/users`, {
+    const res = await fetch(`${BACKEND_URL}/users`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
-    console.log(res.json);
-    return res.json();
+    return await res.json();
   } catch (error) {
+    console.log("ERROR IN FETCHING USERS");
     console.log(error);
   }
 }

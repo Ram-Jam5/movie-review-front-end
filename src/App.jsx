@@ -17,8 +17,7 @@ export const AuthedUserContext = createContext(null);
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); 
   const [movies, setMovies] = useState([])
-
-  const allUsers = authService.getAllUsers();
+  const [users, setUsers] = useState([]);
 
   const handleSignout = () => {
     authService.signout();
@@ -31,6 +30,14 @@ const App = () => {
       setMovies(moviesData)
     };
     if (user) fetchAllMovies();
+  }, [user]);
+
+  useEffect(() => {
+    const fetchAllUsers = async () => {
+      const usersData = await authService.getAllUsers();
+      setUsers(usersData);
+    };
+    if (user) fetchAllUsers();
   }, [user]);
 
   const navigate = useNavigate();
@@ -68,7 +75,7 @@ const App = () => {
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
       <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
       <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
-      <Route path="/users" element={<CommunityPage allUsers={allUsers}/>} />
+      <Route path="/users" element={<CommunityPage users={users}/>} />
     </>
   ) : (
     // Public Route:

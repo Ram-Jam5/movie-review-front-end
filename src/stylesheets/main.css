@@ -2,8 +2,8 @@ body {
     background-color: #1e1e1e;
 }
 
-h1, h2, h3, p, span {
-    color: e0e0e0;
+h1, h2, h3, p, span, a {
+    color: white;
     font-family: Helvetica;
 }
 
@@ -22,7 +22,6 @@ h1, h2, h3, p, span {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200vh;
 }
 
 .main-container {

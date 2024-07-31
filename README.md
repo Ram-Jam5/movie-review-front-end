@@ -6,6 +6,6 @@ Screenshot:
 
 #### Attributions: For this project we used MongoDB.
 
-#### Technologies used: The principle technologies used: JavaScript, Express, Node, React, Mongoose, Cors
+#### The principle technologies used in this app are: JavaScript, Express, Node, React, Mongoose, Cors
 
 #### Next Steps: Planned future enhancements for this project are to add the ability for users to add TV Show information and to add more details about Movies and TV shows like the cast and crew.

@@ -63,6 +63,35 @@ const index = async () => {
       console.log(error);
     }
   };
+  const deleteComment = async (movieId, reviewId, commentId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}/comments/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      })
+      return res.json();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateComment = async (movieId, reviewId, commentId, commentFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}/comments/${commentId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(commentFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const deleteMovie = async (movieId) => {
     try {
@@ -93,7 +122,7 @@ const index = async () => {
       console.log(error);
     }
   }
-  export { index, show, create, getReview, createComment, deleteMovie, update };
+  export { index, show, create, getReview, createComment, deleteComment, updateComment, deleteMovie, update };
 
 
 

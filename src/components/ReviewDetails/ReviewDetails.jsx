@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as movieService from '../../services/movieService';
 
@@ -16,6 +16,15 @@ const ReviewDetails = () => {
 
   if (!review) return <main>Loading...</main>;
 
+  const handleDeleteComment = async (commentId) => {
+   await movieService.deleteComment(movieId, reviewId, commentId)
+    setReview({
+        ...review,
+        comments: review.comments.filter((comment) => comment._id !== commentId),
+    })
+    console.log('deleted comment:', commentId)
+  }
+
   return (
     <div className="review-details">
     <h1>{review.title}</h1>
@@ -28,6 +37,8 @@ const ReviewDetails = () => {
         <article key={comment._id}>
           <header>
             <p>Comment by {comment.author.username} on {new Date(comment.createdAt).toLocaleDateString()}</p>
+            <Link to={`/movies/${movieId}/${reviewId}/comments/${comment._id}/edit`}>Edit</Link>
+            <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
           </header>
           <p>{comment.text}</p>
         </article>

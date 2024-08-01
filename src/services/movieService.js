@@ -16,9 +16,13 @@ const index = async () => {
       const res = await fetch(`${BASE_URL}/${movieId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
-      return res.json();
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return await res.json();
     } catch (error) {
-      console.log(error);
+      console.error('Error fetching movie:', error);
+      throw error;
     }
   };
 
@@ -70,7 +74,7 @@ const index = async () => {
 
   async function update(movieId, movieFormData) {
     try {
-      const res = await fetch(`${BASE_URL}/${movieId}`, {
+      const res = await fetch(`${BASE_URL}/${movieId}/edit`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

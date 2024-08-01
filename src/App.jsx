@@ -24,7 +24,7 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
 
-  const [reviews, setReviews] = useState([]);
+  //const [reviews, setReviews] = useState([]);
   const [users, setUsers] = useState([])
 
   // const [reviews, setReviews] = useState([]);
@@ -77,7 +77,7 @@ const App = () => {
   
   const handleDeleteMovie = async (movieId) => {
     const deletedMovie = await movieService.deleteMovie(movieId);
-    setMovies(movie.filter((movie) => movie._id !== deletedMovie._id));
+    setMovies(movies.filter((movie) => movie._id !== deletedMovie._id));
     navigate('/movies');
   };
 
@@ -101,7 +101,7 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
-      <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
+      {/*<Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />*/}
       {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
       <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />

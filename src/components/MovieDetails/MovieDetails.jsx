@@ -15,9 +15,18 @@ const MovieDetails = (props) => {
 
     useEffect(() => {
         const fetchMovie = async () => {
+          try {
           const movieData = await movieService.show(movieId);
-          console.log('movieData', movieData);
+          console.log('movieData in fetchMovie:', movieData);
+          
+          if(movieData.author) {
+            console.log('Author in movieData:', movieData.author);
+            console.log('Author username:', movieData.author.username);
+          }
           setMovie(movieData);
+        }catch (error) {
+          console.error('Error fetching movie:', error);
+        }
         };
         fetchMovie();
       }, [movieId]);
@@ -42,15 +51,23 @@ const MovieDetails = (props) => {
             <div className="main-container">
               <main>
               <header>
+              <p>{movie.category.toUpperCase()}</p>
                 <h1>{movie.title}</h1>
                 <p>{movie.text}</p>
                 <p>{movie.category}</p>
                 <p>{movie.director}</p>
                 <p>{movie.year}</p>
                 <p>
-                  {/* {movie.author.username} posted on
-                  {new Date(movie.createdAt).toLocaleDateString()} */}
+                {movie.author?.username|| "Unknown Author"} posted on
+                  
+                  {new Date(movie.createdAt).toLocaleDateString()} 
                 </p>
+                {movie.author && movie.author._id === user._id && (
+                  <>
+                   <Link to={`/movies/${movieId}/edit`}>Edit</Link>
+                  <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
+                  </>
+                )}
               </header>
               <>
               
@@ -82,7 +99,7 @@ const MovieDetails = (props) => {
                   {movie.author._id === user._id && ( */}
               {/* <> */}
           
-          {/* <Link to={`/movies/${movieId}/edit`}>Edit</Link>
+          {/* <Link to={`/movies/${movieId}/edit`}>Edit</Link>*
           <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
 
               </>

@@ -58,6 +58,7 @@ const MovieDetails = (props) => {
                 <p>{movie.director}</p>
                 <p>{movie.year}</p>
                 <p>
+
                 {movie.author?.username|| "Unknown Author"} posted on
                   
                   {new Date(movie.createdAt).toLocaleDateString()} 
@@ -68,51 +69,33 @@ const MovieDetails = (props) => {
                   <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
                   </>
                 )}
+
               </header>
               <>
               
               </>
-              <>
-             {movie.reviews ? movie.reviews.map((review) => (
-              <div>
-                {review.title}
-              </div>
-             )): console.log("second") }
               
-              </>
-            <>
-            
-            </>
-              {/* <section> */}
-              {/* <h2>Comments</h2>
-              <CommentForm  handleAddComment={handleAddComment} /> */}
+              {/* reviewList component? */}
+              <h2>Reviews</h2>
+             {movie.reviews.map((review ,index) => (
+              <div key={review._id || index}>
+              <Link to={`/movies/${movieId}/${review._id}`}>
+                <h4>{review.title}</h4>
+              </Link>
+                <p>{review.text}</p>
+                <p>{review.author.username} posted on 
+                  {new Date(review.createdAt).toLocaleDateString()}
+                </p>
+              </div>
+              ))}
+              
 
-            {/* {!movie.comments.length && <p>There are no comments.</p>}
+              </main>
 
-            {movie.comments.map((comment) => (
-              <article key={comment._id}>
-                <header>
-                  <p>
-                    {comment.author.username} posted on
-                    {new Date(comment.createdAt).toLocaleDateString()}
-                  </p>
-                  {movie.author._id === user._id && ( */}
-              {/* <> */}
-          
-          {/* <Link to={`/movies/${movieId}/edit`}>Edit</Link>*
-          <button onClick={() => props.handleDeleteMovie(movieId)}>Delete</button>
-
-              </>
-                  )}
-                </header>
-                <p>{comment.text}</p>
-              </article>
-            ))}
-          </section> */}
-            </main>
           </div>
       </div>
     )
-};
-
-export default MovieDetails;
+  }   
+  
+export default MovieDetails;         
+            

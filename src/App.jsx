@@ -11,10 +11,12 @@ import * as movieService from './services/movieService';
 // import * as reviewService from './services/reviewService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
+import ReviewDetails from './components/ReviewDetails/ReviewDetails'
 
 // import ReviewList from './components/ReviewList/ReviewList';
 
 import CommunityPage from './components/CommunityPage/CommunityPage'
+import CommentForm from './components/CommentForm/CommentForm';
 
 export const AuthedUserContext = createContext(null);
 
@@ -84,11 +86,17 @@ const App = () => {
   const handleUpdateMovie = async (movieId, movieFormData) => {
     const updatedMovie = await movieService.update(movieId, movieFormData);
   
-    setMovies(movie.map((movie) => (moviesId === movie._id ? updatedMovie : movie)));
+    setMovies(movies.map((movie) => (movieId === movie._id ? updatedMovie : movie)));
   
     navigate(`/movies/${movieId}`);
   };
-
+  const handleUpdateComment = async (movieId, reviewId, commentId, CommentFormData) => {
+    try {
+      await movieService.updateComment(movieId, reviewId, CommentFormData);
+    } catch (error) {
+      console.log('error:', error)
+    }
+  }
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -101,7 +109,10 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
-      {/*<Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />*/}
+
+      <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+      <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
+
       {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
       <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />

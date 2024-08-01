@@ -26,7 +26,7 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
 
-  const [reviews, setReviews] = useState([]);
+  //const [reviews, setReviews] = useState([]);
   const [users, setUsers] = useState([])
 
   // const [reviews, setReviews] = useState([]);
@@ -109,8 +109,10 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
+
       <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
       <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
+
       {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
       <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />

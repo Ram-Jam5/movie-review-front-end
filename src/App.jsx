@@ -11,6 +11,7 @@ import * as movieService from './services/movieService';
 import * as reviewService from './services/reviewService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
+import ReviewDetails from './components/ReviewDetails/ReviewDetails'
 
 // import ReviewList from './components/ReviewList/ReviewList';
 
@@ -96,7 +97,7 @@ const App = () => {
       <Route path="/movies" element={<MovieList movies={movies} />} />
       <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
-      <Route path="/movies/:movieId" element={<MovieDetails handleDeleteMovie={handleDeleteMovie} />} />
+      <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails />} />
       {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
       <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />

@@ -37,10 +37,20 @@ const index = async () => {
       console.log(error);
     }
   };
-  
-  const createComment = async (movieId, commentFormData) => {
+  const getReview = async (movieId, reviewId) => {
     try {
-      const res = await fetch(`${BASE_URL}/${movieId}/comments`, {
+      const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const createComment = async (movieId, reviewId, commentFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}/comments`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -83,7 +93,7 @@ const index = async () => {
       console.log(error);
     }
   }
-  export { index, show, create, createComment, deleteMovie, update };
+  export { index, show, create, getReview, createComment, deleteMovie, update };
 
 
 

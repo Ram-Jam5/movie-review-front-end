@@ -42,6 +42,7 @@ const index = async () => {
     }
   };
   const getReview = async (movieId, reviewId) => {
+    console.log(`Fetching review with movieId: ${movieId} and reviewId: ${reviewId}`);
     try {
       const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
@@ -51,6 +52,21 @@ const index = async () => {
       console.log(error)
     }
   }
+  const createReview = async (movieId, reviewFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${movieId}/reviews`, {
+        method: "POST",
+        headers: {  Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+        }, 
+        body: JSON.stringify(reviewFormData),
+       });
+      return await res.json();
+    } catch (error) {
+      console.log(error)
+    }
+          
+      }
 
   const createComment = async (movieId, reviewId, commentFormData) => {
     try {
@@ -126,7 +142,7 @@ const index = async () => {
       console.log(error);
     }
   }
-  export { index, show, create, getReview, createComment, deleteComment, updateComment, deleteMovie, update };
+  export { index, show, create, getReview, createReview, createComment, deleteComment, updateComment, deleteMovie, update };
 
 
 

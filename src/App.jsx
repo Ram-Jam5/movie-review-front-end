@@ -17,6 +17,7 @@ import ReviewDetails from './components/ReviewDetails/ReviewDetails'
 
 import CommunityPage from './components/CommunityPage/CommunityPage'
 import CommentForm from './components/CommentForm/CommentForm';
+import ReviewForm from './components/ReviewForm/ReviewForm';
 
 export const AuthedUserContext = createContext(null);
 
@@ -26,7 +27,7 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
 
-  //const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [users, setUsers] = useState([])
 
   // const [reviews, setReviews] = useState([]);
@@ -90,6 +91,11 @@ const App = () => {
   
     navigate(`/movies/${movieId}`);
   };
+  const handleAddReview = async (movieId, reviewFormData) => {
+    const newReview = await movieService.createReview(movieId, reviewFormData);
+    setReviews([newReview, ...reviews])
+    navigate(`/movies`)
+  }
   const handleUpdateComment = async (movieId, reviewId, commentId, CommentFormData) => {
     try {
       await movieService.updateComment(movieId, reviewId, CommentFormData);
@@ -111,6 +117,8 @@ const App = () => {
 
 
       <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+      <Route path='/movies/:movieId/:reviewId/edit' element={<ReviewForm />} />
+      <Route path='/movies/:movieId/:reviewId/new' element={<ReviewForm handleAddReview={handleAddReview} />} />
       <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 
       {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}

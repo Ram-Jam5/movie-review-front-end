@@ -6,6 +6,7 @@ import { AuthedUserContext } from '../../App';
 import { Link } from 'react-router-dom';
 
 
+
 const MovieDetails = (props) => {
   const [movie, setMovie] = useState(null);
   // const [reviews, setReviews] =  useState([])
@@ -54,13 +55,14 @@ const MovieDetails = (props) => {
               <p>{movie.category.toUpperCase()}</p>
                 <h1>{movie.title}</h1>
                 <p>{movie.text}</p>
-                <p>{movie.category}</p>
+                
                 <p>{movie.director}</p>
                 <p>{movie.year}</p>
+                <div>
+                  <Link to={'/movies/:movieId/:reviewId/new'}>New Review</Link>
+                </div>
                 <p>
-
-                {movie.author?.username|| "Unknown Author"} posted on
-                  
+                  {movie.author?.username|| "Unknown Author"} posted on
                   {new Date(movie.createdAt).toLocaleDateString()} 
                 </p>
                 {movie.author && movie.author._id === user._id && (

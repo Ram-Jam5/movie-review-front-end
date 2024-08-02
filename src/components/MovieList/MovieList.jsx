@@ -7,20 +7,22 @@ const MovieList = (props) => {
         <div className="main-container">
           <main>
             {props.movies.map((movie, index) => (
-
-              <Link style={{color: 'white'}} key={movie._id || index} to={`/movies/${movie._id}`}>
-                <article>
-                  <header>
-                    <h2>{movie.title}</h2>
-                    <p>Year: {movie.year}</p>
-                    <p>Director: {movie.director}</p>
-                    <p>
-                      {movie.category}
-                    </p>
-                  </header>
-                </article>
-                <br></br>
-              </Link>
+              <div className="post-container">
+                <Link style={{color: 'white'}} key={movie._id || index} to={`/movies/${movie._id}`}>
+                  <article>
+                    <header>
+                      <div className="outer-container">
+                        <h2>{movie.title}</h2>
+                        <p>Year: {movie.year}</p>
+                        <p>Director: {movie.director}</p>
+                        <p>
+                          {movie.category}
+                        </p>
+                      </div>
+                    </header>
+                  </article>
+                </Link>
+              </div>
             ))}
           </main>
         </div>

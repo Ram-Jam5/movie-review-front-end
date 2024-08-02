@@ -99,6 +99,7 @@ const App = () => {
     <>
         <AuthedUserContext.Provider value={user}>
           <NavBar user={user} handleSignout={handleSignout} />
+          <div className="outer-container">
           <Routes>
   {user ? (
     // Protected Routes:
@@ -126,6 +127,7 @@ const App = () => {
   <Route path="/signup" element={<SignupForm setUser={setUser} />} />
   <Route path="/signin" element={<SigninForm setUser={setUser} />} />
 </Routes>
+      </div>
       </AuthedUserContext.Provider>
     </>
   );

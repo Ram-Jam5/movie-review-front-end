@@ -19,6 +19,17 @@ const getAllUsers = async () => {
   }
 }
 
+const getUserProfile = async (userId) => {
+  try {
+    const res = await fetch(`${BACKEND_URL}/users/${userId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const signup = async (formData) => {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
@@ -63,4 +74,4 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-export { signup, signin, getUser, signout, getAllUsers };
+export { signup, signin, getUser, signout, getAllUsers, getUserProfile };

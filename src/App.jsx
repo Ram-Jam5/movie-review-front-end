@@ -93,7 +93,7 @@ const App = () => {
   const handleAddReview = async (movieId, reviewFormData) => {
     const newReview = await movieService.createReview(movieId, reviewFormData);
     setReviews([newReview, ...reviews])
-    navigate(`/movies`)
+    navigate(`/movies/${movieId}`)
   }
   const handleDeleteReview = async (reviewId) => {
     const deletedReview = await movieService.deleteReview(reviewId)

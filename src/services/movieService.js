@@ -55,8 +55,8 @@ const getReview = async (movieId, reviewId) => {
   }
 }
 
-const createReview = async (movieId, reviewFromData) => {
-  console.log(reviewFromData)
+const createReview = async (movieId, reviewFormData) => {
+  console.log(reviewFormData)
   try {
     const res = await fetch(`${BASE_URL}/${movieId}`, {
       method: 'POST',
@@ -64,13 +64,14 @@ const createReview = async (movieId, reviewFromData) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(reviewFromData)
+      body: JSON.stringify(reviewFormData)
     });
-    return res.json();
+    return res.json(res);
   } catch (error) {
     console.log(error)
   }
 }
+
 const deleteReview = async (movieId, reviewId) => {
   try {
     const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}` , {

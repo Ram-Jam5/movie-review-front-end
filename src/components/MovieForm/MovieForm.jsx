@@ -40,7 +40,9 @@ const MovieForm = (props) => {
       <div className="main-container">
           <main>
           <form onSubmit={handleSubmit}>
+            <div className="form-container">
             <h1>{movieId ? 'Edit Movie' : 'New Movie'}</h1>
+            <div>
             <label htmlFor="title-input">Title</label>
             <input
               required
@@ -52,6 +54,9 @@ const MovieForm = (props) => {
               value={formData.title}
               onChange={handleChange}
             />
+            </div>
+
+            <div>
             <label htmlFor="director-input">Director</label>
             <input
               required
@@ -61,6 +66,9 @@ const MovieForm = (props) => {
               value={formData.director}
               onChange={handleChange}
             />
+            </div>
+
+            <div>
             <label htmlFor="category-input">Genre</label>
             <select
               required
@@ -80,7 +88,9 @@ const MovieForm = (props) => {
               <option value="Thriller">Thriller</option>
               <option value="Western">Western</option>
             </select>
+            </div>
 
+            <div>
             <label htmlFor="year-input">Year</label>
             <input
               required
@@ -90,8 +100,10 @@ const MovieForm = (props) => {
               value={formData.year}
               onChange={handleChange}
             />
+            </div>
 
             <button type="submit">SUBMIT</button>
+            </div>
           </form>
         </main>
       </div>

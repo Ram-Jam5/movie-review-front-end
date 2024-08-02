@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
 import { AuthedUserContext } from '../../App';
@@ -59,7 +59,7 @@ const MovieDetails = (props) => {
                 <p>{movie.director}</p>
                 <p>{movie.year}</p>
                 <div>
-                  <Link to={'/movies/:movieId/reviews'}>New Review</Link>
+                  <Link to={`/movies/${movieId}/reviews`}>New Review</Link>
                 </div>
                 <p>
                   {movie.author?.username|| "Unknown Author"} posted on

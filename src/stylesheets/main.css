@@ -2,9 +2,33 @@ body {
     background-color: #1e1e1e;
 }
 
-h1, h2, h3, p, span, a {
+h1, h2, h3, p, span, a, form {
     color: white;
     font-family: Helvetica;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-link {
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 72px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+h4 {
+    font-size: 18px;
 }
 
 .left, .right {

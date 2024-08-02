@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
 import { AuthedUserContext } from '../../App';
-// import CommentForm from '../CommentForm/CommentForm';
+
 import { Link } from 'react-router-dom';
 
 

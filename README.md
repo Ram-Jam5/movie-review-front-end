@@ -1,8 +1,8 @@
-Screenshot:
+Screenshot:![Image of our deployed site](<images/Screenshot 2024-08-02 134140.png>)
 
 #### App's Name: We named our app Movie Review. This app helps people to display their favorite movies and interact with a community of people discussing their likes and dislikes about each movie. We chose this app because we are all really big fans of movies.
 
-#### Getting Started: The planning materials we used for this app are on our [trello board](https://trello.com/invite/b/66a05c6da3eef27de20edbc2/ATTIa8788d82b23f4e9b6a37cb3ce8ecebcc5A691DAB/group-5-mern-project). Our deployed link for our app can be found [here](). You can also find our back-repository [here](https://github.com/Ram-Jam5/movie-review-back-end). 
+#### Getting Started: The planning materials we used for this app are on our [trello board](https://trello.com/invite/b/66a05c6da3eef27de20edbc2/ATTIa8788d82b23f4e9b6a37cb3ce8ecebcc5A691DAB/group-5-mern-project). Our deployed link for our app can be found [here](https://transcendent-toffee-fb8e1a.netlify.app/). You can also find our back-repository [here](https://github.com/Ram-Jam5/movie-review-back-end). 
 
 #### Attributions: For this project we used MongoDB.
 

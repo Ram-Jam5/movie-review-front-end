@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import * as movieService from '../../services/movieService'
 const ReviewForm = ({ handleAddReview }) => {
-    const [reviewFormData, setReviewFromData] = useState({
+    const [reviewFormData, setReviewFormData] = useState({
         title: '',
         text: '',
         notes: '',
     });
     const { movieId } = useParams();
     const handleChange = (evt) => {
-        setReviewFromData({...reviewFormData, [evt.target.name] : evt.target.value })
+        setReviewFormData({...reviewFormData, [evt.target.name] : evt.target.value })
     }
     
     const handleSubmit = async (evt) => {

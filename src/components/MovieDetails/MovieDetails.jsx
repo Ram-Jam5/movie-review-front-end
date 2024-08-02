@@ -57,7 +57,7 @@ const MovieDetails = (props) => {
               )}
               <div>
                 <br></br>
-                <Link style={{fontSize:"28px", fontWeight:"bold"}} to={'/movies/:movieId/reviews'}>Add Review!</Link>
+                <Link style={{fontSize:"28px", fontWeight:"bold"}} to={`/movies/${movieId}/reviews`}>Add Review!</Link>
                 <br></br>
                 <br></br>
               </div>

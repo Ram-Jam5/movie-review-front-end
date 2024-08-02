@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService'
 import { AuthedUserContext } from '../../App';
@@ -40,6 +40,7 @@ const MovieDetails = (props) => {
             <div className="main-container">
               <main>
               <header>
+
               <p style={{ fontWeight: 'bold' }}>{movie.category.toUpperCase()}</p>
               <br></br>
               <h1>{movie.title}</h1>
@@ -60,6 +61,7 @@ const MovieDetails = (props) => {
                 <br></br>
                 <br></br>
               </div>
+
 
               </header>
               <>

@@ -1,11 +1,13 @@
-import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
 import * as movieService from '../../services/movieService';
+import { AuthedUserContext } from '../../App';
 
 const ReviewDetails = () => {
   const { movieId, reviewId } = useParams();
   const [review, setReview] = useState(null);
-
+  const navigate = useNavigate()
+const user = useContext(AuthedUserContext)
   useEffect(() => {
     const fetchReview = async () => {
         const reviewData = await movieService.getReview(movieId, reviewId)
@@ -32,6 +34,12 @@ const ReviewDetails = () => {
     })
     console.log('deleted comment:', commentId)
   }
+  const handleDeleteReview = async () => {
+    await movieService.deleteReview(movieId, reviewId)
+    
+    setReview(null)
+    navigate('/movies')
+  }
 
   return (
     <div className="review-details">
@@ -40,7 +48,7 @@ const ReviewDetails = () => {
     <p>{review.author.username} posted on {new Date(review.createdAt).toLocaleDateString()}</p>
    <>
     <Link to={`/movies/${movieId}/${reviewId}/edit`}>Edit review</Link>
-    <button onClick={() => props.handleDeleteReview(reviewId)}>Delete</button>
+    <button onClick={() => handleDeleteReview()}>Delete</button>
    </>
     <section>
       <h2>Comments</h2>

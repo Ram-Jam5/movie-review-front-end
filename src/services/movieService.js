@@ -56,11 +56,13 @@ const getReview = async (movieId, reviewId) => {
 }
 
 const createReview = async (movieId, reviewFromData) => {
+  console.log(reviewFromData)
   try {
     const res = await fetch(`${BASE_URL}/${movieId}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(reviewFromData)
     });
@@ -69,11 +71,25 @@ const createReview = async (movieId, reviewFromData) => {
     console.log(error)
   }
 }
+const deleteReview = async (movieId, reviewId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${movieId}/${reviewId}` , {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      } 
+    })
+    return res.json();
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const updateReview = async (movieId, reviewId) => {
   try {
     const res = await fetch(`${BASE_URL}/${movieId}/${reviewId},`)
   } catch (error) {
-    
+    console.log(error)
   }
 }
 
@@ -153,4 +169,4 @@ async function update(movieId, movieFormData) {
   }
 }
 
-export { index, show, create, createReview, getReview, createComment, deleteComment, updateComment, deleteMovie, update };
+export { index, show, create, createReview, getReview, deleteReview, createComment, deleteComment, updateComment, deleteMovie, update };

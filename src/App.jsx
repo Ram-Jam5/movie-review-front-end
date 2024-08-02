@@ -95,6 +95,10 @@ const App = () => {
     setReviews([newReview, ...reviews])
     navigate(`/movies`)
   }
+  const handleDeleteReview = async (reviewId) => {
+    const deletedReview = await movieService.deleteReview(reviewId)
+    setReviews(reviews.filter((reviewid) => reviewId._id !== deletedReview._id))
+  }
   const handleUpdateComment = async (movieId, reviewId, commentId, CommentFormData) => {
     try {
       await movieService.updateComment(movieId, reviewId, CommentFormData);
@@ -116,7 +120,7 @@ const App = () => {
         <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
 
-        <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+        <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails handleDeleteReview={handleDeleteReview}  />} />
         <Route path="/movies/:movieId/:reviewId/edit" element={<ReviewForm />} />
         <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 

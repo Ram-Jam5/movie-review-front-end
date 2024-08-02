@@ -97,27 +97,27 @@ const App = () => {
   }
   return (
     <>
-      <AuthedUserContext.Provider value={user}>
-        <NavBar user={user} handleSignout={handleSignout} />
-        <Routes>
+        <AuthedUserContext.Provider value={user}>
+          <NavBar user={user} handleSignout={handleSignout} />
+          <Routes>
   {user ? (
     // Protected Routes:
     <>
-      <Route path="/" element={<Dashboard user={user} />} />
-      <Route path="/movies" element={<MovieList movies={movies} />} />
-      <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
+        <Route path="/" element={<Dashboard user={user} />} />
+        <Route path="/movies" element={<MovieList movies={movies} />} />
+        <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
 
-      <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
-      <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
+        <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+        <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 
-      {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
+        {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
-      <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
+        <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
 
-      <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
-      <Route path="/users" element={<CommunityPage users={users}/>} />
-      <Route path="/users/:userId" element={<UserProfile />} />
+        <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
+        <Route path="/users" element={<CommunityPage users={users}/>} />
+        <Route path="/users/:userId" element={<UserProfile />} />
     </>
   ) : (
     // Public Route:

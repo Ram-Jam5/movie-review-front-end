@@ -6,7 +6,8 @@ body {
     padding: 0;
 }
 
-h1, h2, h3, p, span, a {
+
+h1, h2, h3, p, span, a, form{
     color: #ffffff;
     margin: 0;
 }
@@ -14,6 +15,30 @@ h1, h2, h3, p, span, a {
 a {
     color: #ff4500;
     text-decoration: none;
+}
+.nav-link {
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 72px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+.left, .right {
+    flex: 0 1 auto;
+
 }
 
 a:hover {

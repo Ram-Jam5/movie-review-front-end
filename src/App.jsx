@@ -11,11 +11,12 @@ import * as movieService from './services/movieService';
 // import * as reviewService from './services/reviewService';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import MovieForm from './components/MovieForm/MovieForm';
-import ReviewDetails from './components/ReviewDetails/ReviewDetails'
+import ReviewDetails from './components/ReviewDetails/ReviewDetails';
 
 // import ReviewList from './components/ReviewList/ReviewList';
 
-import CommunityPage from './components/CommunityPage/CommunityPage'
+import CommunityPage from './components/CommunityPage/CommunityPage';
+import UserProfile from './components/UserProfile/UserProfile';
 import CommentForm from './components/CommentForm/CommentForm';
 
 export const AuthedUserContext = createContext(null);
@@ -26,16 +27,13 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
 
+  const [users, setUsers] = useState([]);
+
   //const [reviews, setReviews] = useState([]);
-  const [users, setUsers] = useState([])
 
   // const [reviews, setReviews] = useState([]);
 
-
- 
-
-
-
+  
 
   const handleSignout = () => {
     authService.signout();
@@ -99,26 +97,27 @@ const App = () => {
   }
   return (
     <>
-      <AuthedUserContext.Provider value={user}>
-        <NavBar user={user} handleSignout={handleSignout} />
-        <Routes>
+        <AuthedUserContext.Provider value={user}>
+          <NavBar user={user} handleSignout={handleSignout} />
+          <Routes>
   {user ? (
     // Protected Routes:
     <>
-      <Route path="/" element={<Dashboard user={user} />} />
-      <Route path="/movies" element={<MovieList movies={movies} />} />
-      <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
+        <Route path="/" element={<Dashboard user={user} />} />
+        <Route path="/movies" element={<MovieList movies={movies} />} />
+        <Route path="/movies/new" element={<MovieForm handleAddMovie={handleAddMovie} />} />
 
 
-      <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
-      <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
+        <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+        <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 
-      {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
+        {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
-      <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
+        <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
 
-      <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
-      <Route path="/users" element={<CommunityPage users={users}/>} />
+        <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
+        <Route path="/users" element={<CommunityPage users={users}/>} />
+        <Route path="/users/:userId" element={<UserProfile />} />
     </>
   ) : (
     // Public Route:

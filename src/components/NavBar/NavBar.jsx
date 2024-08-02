@@ -8,11 +8,11 @@ const NavBar = ({ handleSignout }) => {
     <>
       {user ? (
         <div className="default-nav-bar">
-          <Link to='/'>HOME</Link>
-          <Link to='/movies'>Movies</Link>
-          <Link to="/movies/new">Add Movie</Link>
-          <Link to='/users'>Community Page</Link>
-          <Link to='' onClick={handleSignout}>SIGN OUT</Link>
+          <Link className="nav-link" to='/'>HOME</Link>
+          <Link className="nav-link" to='/movies'>Movies</Link>
+          <Link className="nav-link" to="/movies/new">Add Movie</Link>
+          <Link className="nav-link" to='/users'>Community Page</Link>
+          <Link className="nav-link" to='' onClick={handleSignout}>SIGN OUT</Link>
         </div>
       ) : (
         <div className="default-nav-bar">

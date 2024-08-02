@@ -51,16 +51,24 @@ const user = useContext(AuthedUserContext)
     <button onClick={() => handleDeleteReview()}>Delete</button>
    </>
     <section>
+      <div>
+        <br></br>
+        <Link style={{fontSize:"16px"}} to={`/movies/${movieId}/${reviewId}/comments`}>Add Comment!</Link>
+        <br></br>
+        <br></br>
+      </div>
       <h2>Comments</h2>
       {review.comments.length === 0 && <p>No comments yet.</p>}
       {review.comments.map((comment) => (
         <article key={comment._id}>
           <header>
+            <br></br>
             <p>Comment by {comment.author.username} on {new Date(comment.createdAt).toLocaleDateString()}</p>
             <Link to={`/movies/${movieId}/${reviewId}/comments/${comment._id}/edit`}>Edit</Link>
             <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
           </header>
           <p>{comment.text}</p>
+          <br></br>
         </article>
       ))}
     </section>

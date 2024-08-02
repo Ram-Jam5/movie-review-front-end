@@ -106,6 +106,17 @@ const App = () => {
       console.log('error:', error)
     }
   }
+
+  const handleAddComment = async (movieId, reviewId, commentFormData) => {
+    try {
+      const newComment = await movieService.createComment(movieId, reviewId, commentFormData)
+      setComments([newComment, ...comments])
+      navigate(`/movies/${movieId}/${reviewId}`)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
         <AuthedUserContext.Provider value={user}>
@@ -131,6 +142,7 @@ const App = () => {
         <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
         <Route path="/users" element={<CommunityPage users={users}/>} />
         <Route path="/users/:userId" element={<UserProfile />} />
+        <Route path="/movies/:movieId/:reviewId/comments" element={<CommentForm handleAddComment={handleAddComment}/>} />
     </>
   ) : (
     // Public Route:

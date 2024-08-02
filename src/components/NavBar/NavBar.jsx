@@ -5,6 +5,7 @@ import { useContext } from 'react';
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
   return (
+    <div className="nav-bar-style">
     <>
       {user ? (
         <div className="default-nav-bar">
@@ -29,6 +30,7 @@ const NavBar = ({ handleSignout }) => {
         </div>
       )}
     </>
+    </div>
   );
 };
 export default NavBar;

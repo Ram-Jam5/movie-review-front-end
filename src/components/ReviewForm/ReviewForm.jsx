@@ -20,33 +20,42 @@ const ReviewForm = ({ handleAddReview }) => {
     return (
         <main>
             <form onSubmit={handleSubmit}>
-                
-                <label htmlFor="title-input">Title</label>
-                <input 
-                    required
-                    type="text"
-                    name="title"
-                    id="title-input"
-                    value={reviewFormData.title}
-                    onChange={handleChange}
-                />
-                <label htmlFor="text-input">Text</label>
-                <input
-                    required
-                    type="text"
-                    name='text'
-                    id="text-input"
-                    value={reviewFormData.text}
-                    onChange={handleChange}
-                />
-                <label htmlFor="notes-input">Notes</label>
-                <textarea                   
-                    name="notes"
-                    id="notes-input"
-                    value={reviewFormData.notes}
-                    onChange={handleChange}
-                />
-                <button type="submit">SUBMIT</button>
+                <div className="outer-container">
+                    <div className="form-container">
+                        <div className="form-container">
+                        <label htmlFor="title-input">Title</label>
+                        <input 
+                            required
+                            type="text"
+                            name="title"
+                            id="title-input"
+                            value={reviewFormData.title}
+                            onChange={handleChange}
+                        />
+                        </div>
+                        <div className="form-container">
+                        <label htmlFor="text-input">Text</label>
+                        <input
+                            required
+                            type="text"
+                            name='text'
+                            id="text-input"
+                            value={reviewFormData.text}
+                            onChange={handleChange}
+                        />
+                        </div>
+                        <div className="form-container">
+                        <label htmlFor="notes-input">Notes</label>
+                        <textarea                   
+                            name="notes"
+                            id="notes-input"
+                            value={reviewFormData.notes}
+                            onChange={handleChange}
+                        />
+                        </div>
+                        <button type="submit">SUBMIT</button>
+                    </div>
+                </div>
             </form>
         </main>
     )

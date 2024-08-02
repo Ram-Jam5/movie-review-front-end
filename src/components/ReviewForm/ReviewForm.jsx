@@ -1,12 +1,13 @@
 import { useState } from "react";
-
-const ReviewForm = ({ movieId, handleAddReview }) => {
+import { useParams } from "react-router-dom";
+import * as movieService from '../../services/movieService'
+const ReviewForm = ({ handleAddReview }) => {
     const [reviewFormData, setReviewFromData] = useState({
         title: '',
         text: '',
         notes: '',
     });
-    
+    const { movieId } = useParams();
     const handleChange = (evt) => {
         setReviewFromData({...reviewFormData, [evt.target.name] : evt.target.value })
     }
@@ -19,6 +20,7 @@ const ReviewForm = ({ movieId, handleAddReview }) => {
     return (
         <main>
             <form onSubmit={handleSubmit}>
+                
                 <label htmlFor="title-input">Title</label>
                 <input 
                     required

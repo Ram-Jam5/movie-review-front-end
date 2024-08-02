@@ -116,12 +116,13 @@ const App = () => {
 
 
         <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+        <Route path="/movies/:movieId/:reviewId/edit" element={<ReviewForm />} />
         <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 
         {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
         <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
-
+        <Route path='/movies/:movieId/reviews' element={<ReviewForm handleAddReview={handleAddReview} />} />
         <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
         <Route path="/users" element={<CommunityPage users={users}/>} />
         <Route path="/users/:userId" element={<UserProfile />} />

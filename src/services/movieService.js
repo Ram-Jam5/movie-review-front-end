@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/movies/`;
+const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/movies`;
 
 const index = async () => {
     try {
@@ -52,6 +52,28 @@ const getReview = async (movieId, reviewId) => {
     return res.json();
   } catch (error) {
     console.log(error)
+  }
+}
+
+const createReview = async (movieId, reviewFromData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${movieId}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify(reviewFromData)
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error)
+  }
+}
+const updateReview = async (movieId, reviewId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${movieId}/${reviewId},`)
+  } catch (error) {
+    
   }
 }
 
@@ -131,4 +153,4 @@ async function update(movieId, movieFormData) {
   }
 }
 
-export { index, show, create, getReview, createComment, deleteComment, updateComment, deleteMovie, update };
+export { index, show, create, createReview, getReview, createComment, deleteComment, updateComment, deleteMovie, update };

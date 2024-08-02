@@ -8,11 +8,19 @@ const ReviewDetails = () => {
 
   useEffect(() => {
     const fetchReview = async () => {
-      const reviewData = await movieService.getReview(movieId, reviewId);
-      setReview(reviewData);
-    };
+        const reviewData = await movieService.getReview(movieId, reviewId)
+        console.log(reviewData)
+        setReview(reviewData)
+    //     const movieData = await movieService.show(movieId);
+    //   const foundReview = movieData.reviews.map((review) => {
+    //     if (review._id === reviewId) return review
+    //   })
+    //   console.log(foundReview)
+    //     setReview(movieData);
+    // };
+}
     fetchReview();
-  }, [movieId, reviewId]);
+  }, []);
 
   if (!review) return <main>Loading...</main>;
 
@@ -30,6 +38,10 @@ const ReviewDetails = () => {
     <h1>{review.title}</h1>
     <p>{review.text}</p>
     <p>{review.author.username} posted on {new Date(review.createdAt).toLocaleDateString()}</p>
+   <>
+    <Link to={`/movies/${movieId}/${reviewId}/edit`}>Edit review</Link>
+    <button onClick={() => props.handleDeleteReview(reviewId)}>Delete</button>
+   </>
     <section>
       <h2>Comments</h2>
       {review.comments.length === 0 && <p>No comments yet.</p>}

@@ -44,6 +44,7 @@ const MovieForm = (props) => {
             <label htmlFor="title-input">Title</label>
             <input
               required
+              // eslint-disable-next-line react/no-unknown-property
               unique="title"
               type="text"
               name="title"

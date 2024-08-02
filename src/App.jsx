@@ -18,6 +18,7 @@ import ReviewDetails from './components/ReviewDetails/ReviewDetails';
 import CommunityPage from './components/CommunityPage/CommunityPage';
 import UserProfile from './components/UserProfile/UserProfile';
 import CommentForm from './components/CommentForm/CommentForm';
+import ReviewForm from './components/ReviewForm/ReviewForm';
 
 export const AuthedUserContext = createContext(null);
 
@@ -27,8 +28,9 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
 
-  const [users, setUsers] = useState([]);
-
+  const [reviews, setReviews] = useState([]);
+  const [users, setUsers] = useState([])
+ 
   //const [reviews, setReviews] = useState([]);
 
   // const [reviews, setReviews] = useState([]);
@@ -88,6 +90,11 @@ const App = () => {
   
     navigate(`/movies/${movieId}`);
   };
+  const handleAddReview = async (movieId, reviewFormData) => {
+    const newReview = await movieService.createReview(movieId, reviewFormData);
+    setReviews([newReview, ...reviews])
+    navigate(`/movies`)
+  }
   const handleUpdateComment = async (movieId, reviewId, commentId, CommentFormData) => {
     try {
       await movieService.updateComment(movieId, reviewId, CommentFormData);
@@ -110,12 +117,13 @@ const App = () => {
 
 
         <Route path="/movies/:movieId/:reviewId" element={<ReviewDetails  />} />
+        <Route path="/movies/:movieId/:reviewId/edit" element={<ReviewForm />} />
         <Route path='/movies/:movieId/:reviewId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment} />}/>
 
         {/* <Route path="/movies/:movieId" element={<ReviewList reviews={reviews}/>} /> */}
 
         <Route path="/movies/:movieId" element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
-
+        <Route path='/movies/:movieId/reviews' element={<ReviewForm handleAddReview={handleAddReview} />} />
         <Route path="/movies/:movieId/edit" element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
         <Route path="/users" element={<CommunityPage users={users}/>} />
         <Route path="/users/:userId" element={<UserProfile />} />
